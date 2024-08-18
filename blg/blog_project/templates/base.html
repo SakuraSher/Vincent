@@ -8,6 +8,13 @@
         <div><h1><a href="{% url 'home' %}">Blog</a></h1></div>
         <div><h1><a href="{% url 'post_new' %}">New Blog Post</a></h1></div>
     </header>
+    {% if user.is_authenticated %}
+    <p>Hi {{user.username}}</p>
+    <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+    <p>You are not logged in</p>
+    <a href="{% url 'login' %}">Login</a>
+    {% endif %}
     <div>
         {% block content %}
         {% endblock content %}
